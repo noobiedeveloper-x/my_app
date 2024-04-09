@@ -133,6 +133,14 @@ class _SignupState extends State<Signup> {
     super.dispose();
   }
 
+  //validate input if its not equals then 6
+  String _validateInput(String value) {
+    if (value.length != 6) {
+      return 'Input must be exactly 6 characters long.';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -209,6 +217,7 @@ class _SignupState extends State<Signup> {
                   child: TextField(
                     controller: _usernameController,
                     maxLength: 6, // Maximum input length set to 6
+                    validator: _validateInput,
                     decoration: InputDecoration(
                       counterText: '',
                       hintText: 'Username',
@@ -249,6 +258,7 @@ class _SignupState extends State<Signup> {
                   child: TextField(
                     controller: _passwordController,
                     maxLength: 6, // Maximum input length set to 6
+                    validator: _validateInput,
                     obscureText: _obscureText,
                     decoration: InputDecoration(
                       hintText: 'Password',
